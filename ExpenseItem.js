@@ -1,13 +1,24 @@
-import './ExpenseItem.css';
+import ExpenseDate from "./ExpenseDate";
+import "./ExpenseItem.css";
 
-const ExpenseItem = (pros) => {
-    return (<div className="expense-item">
-        <div>{pros.date.toISOString()}</div>
-        <div className="expense-item h2">{pros.title}</div>
-        <div className="expense-item__price">${pros.amount}</div>
-        <div className="expense-item__locationofexp">{pros.title}</div>
-    </div>)
+function ExpenseItem(props) {
+  const add=()=>{
+    console.log(props.title,"Added");
+  }
+  
+  const Delete =()=>{
+    console.log("Delete",props.title)
 }
-
+  
+  return (
+    <div className="expense-item">
+      <ExpenseDate date={props.date} />
+      <div className="expense-item h2">{props.title}</div>
+      <div className="expense-item__price">${props.amount}</div>
+      <button onClick={add}>add event</button>
+      <button onClick={Delete}>Delete Expense</button>
+    </div>
+  );
+}
 
 export default ExpenseItem;
